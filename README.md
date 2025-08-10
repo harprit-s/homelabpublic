@@ -14,32 +14,26 @@ This guide helps you:
 ## 1) Enabling SSH on Ubuntu
 ### Install ifconfig support
 ```bash
+# Update package index
 sudo apt update
-sudo apt install -y net-tools
 
-### Install and start the SSH server
-```bash
-sudo apt update
-sudo apt install -y openssh-server
+# Install curl (downloads), net-tools (ifconfig), and OpenSSH server
+sudo apt install -y curl net-tools openssh-server
+
+# Enable and start SSH service
 sudo systemctl enable --now ssh
-```
 
-### (If using UFW) allow SSH
-```bash
-sudo ufw allow OpenSSH
-sudo ufw enable    # safe at the console; if remote, ensure the rule exists first
-```
+# Allow SSH through UFW firewall if installed
+if command -v ufw >/dev/null 2>&1; then
+  sudo ufw allow OpenSSH
+  sudo ufw enable
+fi
 
-### Verify and find your IP
-```bash
+# Show SSH service status and IP address
 systemctl status ssh --no-pager
-hostname -I     # note the LAN IP, e.g. 192.168.1.50
-```
+echo "Server IP addresses:"
+hostname -I
 
-### Connect from another machine
-```bash
-ssh <your-username>@<server-ip>
-# example: ssh ubuntu@192.168.1.50
 ```
 
 ### Recommended: use SSH keys (and harden)
