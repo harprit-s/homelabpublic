@@ -12,6 +12,9 @@ This guide helps you:
 ---
 
 ## 1) Enabling SSH on Ubuntu
+### Install ifconfig support
+sudo apt update
+sudo apt install -y net-tools
 
 ### Install and start the SSH server
 ```bash
