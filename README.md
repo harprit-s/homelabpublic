@@ -13,6 +13,7 @@ This guide helps you:
 
 ## 1) Enabling SSH on Ubuntu
 ### Install ifconfig support
+```bash
 sudo apt update
 sudo apt install -y net-tools
 
