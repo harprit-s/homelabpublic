@@ -151,8 +151,67 @@ sudo bash scripts/deploy_all.sh up     # start
   ```
 
 ---
+# Single‑Stack Management Cheatsheet
 
-### Keep private things private
-- Your actual homelab repo with compose files should be **private**.
-- Never commit real `.env`, keys, or backups. Commit `.env.example` templates only.
-- Use bind mounts like `/opt/containers/<app>/config:/config` so data survives container recreation.
+Use these commands to manage **one stack** at a time in your homelab.
+
+> Run them from your repo root (e.g., `/opt/homelab`).  
+> Replace `<stackname>` with the folder under `stacks/` (e.g., `chromium`, `webtop`).  
+> The `--env-file` flag ensures your stack’s `.env` is loaded even when you run from the repo root.
+
+---
+
+## Stop a single stack
+```bash
+docker compose \
+  -f stacks/<stackname>/compose.yaml \
+  --env-file stacks/<stackname>/.env \
+  down
+```
+- Gracefully stops containers in that stack and removes them.
+- **Data is kept** (volumes/bind mounts are not deleted).
+
+---
+
+## Update a single stack (pull latest image(s) + restart)
+```bash
+docker compose \
+  -f stacks/<stackname>/compose.yaml \
+  --env-file stacks/<stackname>/.env \
+  pull
+
+docker compose \
+  -f stacks/<stackname>/compose.yaml \
+  --env-file stacks/<stackname>/.env \
+  up -d
+```
+- Downloads the newest images, then recreates containers with those images.
+
+---
+
+## Start a single stack
+```bash
+docker compose \
+  -f stacks/<stackname>/compose.yaml \
+  --env-file stacks/<stackname>/.env \
+  up -d
+```
+- Starts the stack in the background using current images/config.
+
+---
+
+## Remove (Destroy) a single stack
+```bash
+docker compose \
+  -f stacks/<stackname>/compose.yaml \
+  --env-file stacks/<stackname>/.env \
+  down -v
+```
+- Stops and removes containers **and their named volumes** for this stack.
+- ⚠ **Warning:** `-v` deletes data in **named volumes**.  
+  Bind mounts like `/opt/containers/<stackname>/config:/config` remain on disk; delete them manually if you want a full wipe:
+  ```bash
+  sudo rm -rf /opt/containers/<stackname>/config
+  ```
+
+
