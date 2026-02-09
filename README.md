@@ -81,9 +81,19 @@ sudo GIT_URL=git@github.com:harprit-s/homelab.git bash -c \
 "curl -fsSL https://raw.githubusercontent.com/harprit-s/homelabpublic/main/scripts/bootstrap_homelab_ubuntu.sh | bash"
 ```
 
-> Defaults: “auto” mode installs Docker only if missing, then deploys.  
-> - Force re-install Docker: `MODE=fresh` (env)  
-> - Skip Docker install (just stacks): `MODE=stacks`
+> **Bootstrap Modes**
+>
+> You can control the script's behavior by setting the `MODE` environment variable.
+>
+> - **`auto` (Default):** Installs Docker if missing, then deploys. No flag needed.
+> - **`fresh`:** Forces a re-install of Docker. Use this if you suspect a problem with your current installation.
+> - **`stacks`:** Skips Docker installation and only deploys the stacks. Use this if you manage Docker manually.
+>
+> **How to use:** Set the `MODE` variable right before the `bash` command. For example, to force a fresh install:
+> ```bash
+> sudo GIT_URL=... MODE=fresh bash -c \
+> "curl -fsSL ... | bash"
+> ```
 
 **Daily use**
 ```bash
@@ -213,5 +223,4 @@ docker compose \
   ```bash
   sudo rm -rf /opt/containers/<stackname>/config
   ```
-
 
