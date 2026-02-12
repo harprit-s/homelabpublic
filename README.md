@@ -224,3 +224,69 @@ docker compose \
   sudo rm -rf /opt/containers/<stackname>/config
   ```
 
+---
+
+## 3) Exposing Services with Cloudflare Tunnel
+
+To publish a server or service from your home network using Cloudflare Zero Trust, the best tool for the job is Cloudflare Tunnel (formerly Argo Tunnel).
+
+This method is highly secure because it creates an outbound-only connection to Cloudflare. This means you don't have to open any ports on your router or deal with Dynamic DNS.
+
+### Prerequisites
+A Cloudflare account and a domain pointed to Cloudflare nameservers.
+
+A Zero Trust dashboard instance (free for up to 50 users).
+
+A machine on your home network to act as a "connector" (Linux, Windows, macOS, or Docker).
+
+### 1. Set up the Tunnel
+The easiest way to manage this is via the Cloudflare Zero Trust Dashboard:
+
+Navigate to Networks > Tunnels.
+
+Click Create a tunnel and select Cloudflared.
+
+Give your tunnel a name (e.g., "Home-Server").
+
+Install the connector: Cloudflare will provide a command to run on your home machine. This installs the cloudflared daemon and authenticates it.
+
+Tip: Running this in Docker is often the cleanest way to manage it on a home server.
+
+### 2. Route Your Traffic
+Once the status shows "Active," you need to tell Cloudflare where to send the traffic.
+
+#### Option A: Public Hostname (Access via Domain)
+Use this to expose a specific service (like a web server or Plex) to a sub-domain.
+
+Go to the Public Hostname tab.
+
+Subdomain: myserver | Domain: yourdomain.com.
+
+Service: Select the protocol (usually HTTP) and enter the Private IP and Port (e.g., 192.168.1.50:8080).
+
+#### Option B: Private Network (Access via VPN-style)
+Use this if you want to access your entire home subnet (e.g., 192.168.1.0/24) securely without making individual services public.
+
+Go to the Private Network tab.
+
+Add your IP range (e.g., 192.168.1.0/24).
+
+You will need the Cloudflare WARP client installed on your remote devices to "see" these private IPs.
+
+### 3. Layer on Security (Crucial Step)
+Even if you publish a public hostname, you shouldn't leave it open to the world.
+
+Go to Access > Applications.
+
+Add an application and select Self-hosted.
+
+Enter the subdomain you created in Step 2.
+
+Create a Policy to restrict access. For example:
+
+Action: Allow
+
+Include: Emails (enter your specific email) or GitHub/Google authentication.
+
+⚠️ Security Note
+When using Tunnels, Cloudflare handles the SSL/TLS termination. Ensure your local service is working over HTTP/HTTPS correctly before connecting the tunnel. If you use a self-signed certificate locally, you may need to toggle No TLS Verify in the Tunnel's "HTTP Settings."
