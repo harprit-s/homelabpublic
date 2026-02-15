@@ -290,3 +290,69 @@ Include: Emails (enter your specific email) or GitHub/Google authentication.
 
 ⚠️ Security Note
 When using Tunnels, Cloudflare handles the SSL/TLS termination. Ensure your local service is working over HTTP/HTTPS correctly before connecting the tunnel. If you use a self-signed certificate locally, you may need to toggle No TLS Verify in the Tunnel's "HTTP Settings."
+
+### 4) Securing Your Tunnel with Email OTP
+By default, Cloudflare includes One-Time PIN (OTP) via email, which is the easiest way to start.
+
+#### Step 1: Set up your "Identity Provider"
+This is the method users will use to prove who they are.
+
+In the Zero Trust Dashboard, go to Settings > Authentication.
+
+Under Login methods, you’ll see "One-time PIN" is usually enabled by default.
+
+(Optional) If you want to use Google or GitHub instead, click Add new, select the provider, and follow the prompts to link your account.
+
+#### Step 2: Create an "Application"
+An Application connects your authentication rules to your specific Tunnel URL.
+
+Go to Access > Applications > Add an application.
+
+Select Self-hosted.
+
+**Application Configuration:**
+
+Application name: Something like "Home Server."
+
+Domain: Enter the exact subdomain and domain you set up in your Tunnel (e.g., myserver.yourdomain.com).
+
+Scroll down and click Next.
+
+#### Step 3: Add an "Access Policy"
+This defines who is allowed to pass through the gate.
+
+Policy name: "Allow Me Only."
+
+Action: Ensure this is set to Allow.
+
+**Configure rules:**
+
+Selector: Select Emails.
+
+Value: Type your personal email address.
+
+Tip: You can also use "Emails ending in" for a specific domain (like @yourcompany.com).
+
+Click Next, then scroll to the bottom and click Add application.
+
+**How it works now:**
+You type myserver.yourdomain.com into your browser.
+
+Cloudflare intercepts the request and shows a login page.
+
+You enter your email.
+
+Cloudflare sends a 6-digit code to your email.
+
+You enter the code, and only then are you connected to your home server.
+
+**Pro-Tip: The "Bypass" Rule**
+If you are at home on your own Wi-Fi, you might not want to enter an OTP every time. You can add a second policy to the same application:
+
+Action: Bypass
+
+Selector: IP Ranges
+
+Value: Your home network's public IP address.
+
+Note: This will let you skip the login screen when you're physically at home.
