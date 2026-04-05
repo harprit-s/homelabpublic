@@ -36,7 +36,7 @@ hostname -I
 
 ```
 
-### Recommended: use SSH keys (and harden)
+### Recommended: use SSH keys (and harden) for server SSH (Not github)
 On your **client** (laptop/PC):
 ```bash
 ssh-keygen -t ed25519 -C "homelab"
@@ -67,7 +67,7 @@ You have two paths: **A (one-command bootstrap)** or **B (manual)**.
 - Pulls images and brings stacks up  
 - (Optional) Sets a nightly auto-update cron  
 
-**Prepare: add an SSH deploy key on the server (one-time)**
+**Prepare: add an SSH deploy key on the server (one-time)- IT also connects Github check private repo readme for deatils**
 ```bash
 ssh-keygen -t ed25519 -C "homelab" -f ~/.ssh/id_ed25519
 cat ~/.ssh/id_ed25519.pub
