@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml xmlns:frss="https://freshrss.org/opml" version="2.0">
+  <head>
+    <title>FreshRSS</title>
+    <dateCreated>Tue, 07 Apr 2026 14:22:38 +1200</dateCreated>
+  </head>
+  <body>
+    <outline text="Microsoft Community Blog">
+      <outline text="Microsoft Security Community Blog articles" type="rss" xmlUrl="https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoft-security-blog" htmlUrl="https://techcommunity.microsoft.com/t5/microsoft-security-community/bg-p/microsoft-security-blog"/>
+    </outline>
+  </body>
+</opml>

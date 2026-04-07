@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml xmlns:frss="https://freshrss.org/opml" version="2.0">
+  <head>
+    <title>FreshRSS</title>
+    <dateCreated>Tue, 07 Apr 2026 14:22:50 +1200</dateCreated>
+  </head>
+  <body>
+    <outline text="Microsoft Security Products">
+      <outline text="Microsoft Defender for Cloud Blog articles" type="rss" xmlUrl="https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=MicrosoftDefenderCloudBlog" htmlUrl="https://techcommunity.microsoft.com/t5/microsoft-defender-for-cloud/bg-p/MicrosoftDefenderCloudBlog"/>
+      <outline text="Microsoft Defender for Office 365 Blog articles" type="rss" xmlUrl="https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=MicrosoftDefenderforOffice365Blog" htmlUrl="https://techcommunity.microsoft.com/t5/microsoft-defender-for-office/bg-p/MicrosoftDefenderforOffice365Blog"/>
+      <outline text="Microsoft Defender XDR Blog articles" type="rss" xmlUrl="https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=MicrosoftThreatProtectionBlog" htmlUrl="https://techcommunity.microsoft.com/t5/microsoft-defender-xdr-blog/bg-p/MicrosoftThreatProtectionBlog"/>
+      <outline text="Microsoft Entra Blog articles" type="rss" xmlUrl="https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoft-entra-blog" htmlUrl="https://techcommunity.microsoft.com/t5/microsoft-entra-blog/bg-p/microsoft-entra-blog"/>
+      <outline text="Microsoft Security Copilot Blog articles" type="rss" xmlUrl="https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=SecurityCopilotBlog" htmlUrl="https://techcommunity.microsoft.com/t5/microsoft-security-copilot-blog/bg-p/SecurityCopilotBlog"/>
+      <outline text="Microsoft Security Exposure Management Blog articles" type="rss" xmlUrl="https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=securityexposuremanagement" htmlUrl="https://techcommunity.microsoft.com/t5/microsoft-security-exposure/bg-p/securityexposuremanagement"/>
+      <outline text="Microsoft Sentinel Blog articles" type="rss" xmlUrl="https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=MicrosoftSentinelBlog" htmlUrl="https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/bg-p/MicrosoftSentinelBlog"/>
+    </outline>
+  </body>
+</opml>
