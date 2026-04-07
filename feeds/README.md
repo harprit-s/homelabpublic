@@ -10,8 +10,8 @@ This directory contains curated RSS feed collections for monitoring the Microsof
 ## How to Import into FreshRSS
 Follow these steps to add these feeds to your instance:
 
-1. **Download the Files**: Download the `.opml.xml` files from this repository to your local machine.
-2. **Open FreshRSS**: Log in to your FreshRSS instance (e.g., your beehive server on port 3033).
+1. **Download the Files or privide link to repo**: Download the `.opml.xml` files from this repository to your local machine.
+2. **Open FreshRSS**: Log in to your FreshRSS instance .
 3. **Navigate to Import**:
    - Click the **Subscriptions management** icon (the "+" or list icon) in the top navigation bar.
    - Click **Import / export** at the bottom of the left-hand sidebar.
